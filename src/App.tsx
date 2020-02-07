@@ -1,25 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Channels from './components/Channels';
+import React, { useState, useEffect } from "react";
+import IChannels from "./type/IChannels"
+import { http } from "./common/ApiUtils";
 
 const App = () => {
+  const [channels, setChannels] = useState<IChannels[]>([]);
+  useEffect(() => {
+    const requestInfo: RequestInfo = "http://localhost:1323/channels";
+    const data = http<IChannels[]>(requestInfo);
+    data.then((res) => {
+      setChannels(res.filter(ch => ch.Title != null));
+    });
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Channels channels={channels}/>
   );
 }
 
