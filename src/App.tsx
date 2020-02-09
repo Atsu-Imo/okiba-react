@@ -1,5 +1,6 @@
 import './App.css';
 import Channels from './components/Channels';
+import Search from './components/Search'
 import React, { useState, useEffect } from "react";
 import {IChannel} from "./type/IChannels"
 import { http } from "./common/ApiUtils";
@@ -17,9 +18,12 @@ const App = () => {
     )});
   }, []);
   return (
-    <Channels 
-        channels={channels} setChannels={setChannels}
-        selectedChannels={selectedChannels} setSelectedChannels={setSelectedChannels}/>
+    <div>
+      <Channels 
+          channels={channels} setChannels={setChannels}
+          selectedChannels={selectedChannels} setSelectedChannels={setSelectedChannels}/>
+    <Search selected={selectedChannels}/>
+    </div>
   );
 }
 
