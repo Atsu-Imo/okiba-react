@@ -1,4 +1,4 @@
-interface IChannel {
+export interface IChannel {
   ID: number,
   CreatedAt: string,
   UpdatedAt: string,
@@ -12,4 +12,7 @@ interface IChannel {
   Rotation: number
 }
 
-export default IChannel;
+export type IChannelElement = {
+  channel: IChannel,
+  selected: boolean
+}
