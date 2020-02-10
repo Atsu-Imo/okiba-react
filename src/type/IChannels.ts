@@ -11,8 +11,3 @@ export interface IChannel {
   Category: number,
   Rotation: number
 }
-
-export type IChannelElement = {
-  channel: IChannel,
-  selected: boolean
-}

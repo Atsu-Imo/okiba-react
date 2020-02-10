@@ -1,5 +1,5 @@
 import React from "react";
-import {IChannelElement, IChannel} from "../type/IChannels"
+import {IChannel} from "../type/IChannels"
 import _ from 'underscore';
 
 type channelProp = {
@@ -26,7 +26,7 @@ const Channels = (prop: channelProp) => {
     prop.setSelectedChannels(changed);
   };
   return (
-    <div>
+    <div className="channels">
       {prop.channels.map((channel) => {
         return (
           <div key={channel.ChannelID} className="column">
